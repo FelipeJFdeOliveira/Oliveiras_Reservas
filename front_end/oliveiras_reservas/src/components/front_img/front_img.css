@@ -1,0 +1,57 @@
+.frontContainer {
+    max-width: 100%;
+    height: 500px;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.frontImageHome{
+    object-fit: cover;
+    width: 100vw;
+    height: 500px;
+}
+
+
+.frontContainerText{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    position: relative;
+    top:-350px;
+    left:-150px;
+    
+
+}
+
+.frontText.green {
+    display:flex;
+    font-family: 'Montez';
+    font-style: normal;
+    font-size: 55px;
+    text-align: center;
+    color: #42FF00;
+    font-weight: bolder;
+    transform: rotate(-10deg);
+    animation-name: anime;
+    animation-duration: 10s;
+}
+
+.frontText.black {
+    display:flex;
+    font-family: 'Montez';
+    font-style: normal;
+    font-size: 55px;
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+    transform: rotate(-10deg);
+    animation-name: anime;
+    animation-duration: 10s;
+}
+
+@keyframes anime {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }

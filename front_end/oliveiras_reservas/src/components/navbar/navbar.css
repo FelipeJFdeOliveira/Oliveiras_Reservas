@@ -1,0 +1,89 @@
+.navContainer {
+    background-color: #FFA07A;
+    max-width: 100%;
+    height: 142px;
+    z-index: 1;
+}
+
+
+.navItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navItems {
+    width: 1024px;  
+    height: 142px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navLogin{
+    position: relative;
+    top: -40px;
+}
+
+.navHome.black{
+    font-size: 16px;
+    color: black;
+    font-family: Open Sans;
+    cursor: pointer;
+}
+
+.navHotel.black{
+    font-size: 16px;
+    color: black;
+    font-family: Open Sans;
+    cursor: pointer;
+}
+
+.navHouse.black{
+    font-size: 16px;
+    color: black;
+    font-family: Open Sans;
+    cursor: pointer;
+}
+
+.navAdministrator.black{
+    font-size: 16px;
+    color: black;
+    font-family: Open Sans;
+}
+
+.navLog.black{
+    font-size: 16px;
+    color: black;
+    font-family: Open Sans;
+}
+
+.navHome, .navHotel, .navHouse, .navAdministrator, .navLog{
+    font-size: 16px;
+    color: white;
+    font-family: Open Sans;
+    cursor: pointer;
+}
+
+.navImg {
+    mix-blend-mode: multiply;
+}
+
+.navMenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap:20px;
+    position: relative;
+    left:-126px;
+}
+
+.navLogo{
+    height: 100%;
+}
+
+.navAdmin{
+    position: relative;
+    left:-70px;
+}

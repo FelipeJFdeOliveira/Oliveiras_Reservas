@@ -1,0 +1,15 @@
+.filterContainer{
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80px;
+}
+
+.filterContent{
+    background-color: white;
+    width: 1024px;
+    height: 100%;
+    border-radius: 20px;
+    border: solid 2px black;
+}

@@ -1,0 +1,46 @@
+.windowContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 1024px;
+    height: 600px;
+
+}
+
+.windowImage{
+    border-radius: 250px;
+    outline: 2px black solid;
+    display:flex;
+    height: 100%;
+}
+
+.windowTexts{
+    position: relative;
+    top: 0px;
+    height: 299px;
+    
+}
+
+.windowTexts p{   
+    text-align: justify;
+    font-size: 16.65px;
+    font-family: Open Sans;
+    font-style:oblique;
+    line-height: 38px;
+    padding: 0 137px;
+    position: relative;
+    top:-560px;
+}
+
+.windowPlace{
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: Open Sans;
+    line-height: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top:-375px;
+}

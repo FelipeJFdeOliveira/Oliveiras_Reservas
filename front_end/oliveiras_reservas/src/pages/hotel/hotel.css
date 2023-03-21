@@ -1,0 +1,75 @@
+.componentsHotel{
+    animation-name: anime;
+    animation-duration: 2s;
+    height: 4022px;
+}
+
+.footerHotelPage{
+    animation-name: anime;
+    animation-duration: 2s;
+}
+
+@keyframes anime {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.hotelNavbar{
+    position: sticky;
+    top:0px;
+    z-index: 1;
+}
+
+.hotelFilter{
+    position: relative;
+    top:-40px;
+}
+
+.hotelTitlePlaces{
+    position: relative;
+    top:10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.hotelTitlePlacesContainer{
+    width: 1024px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hotelTitlePlacesContainer h1{
+    font-size: 55px;
+    font-family: Montez;
+}
+
+.hotelPlacesTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top:60px;
+    max-height: 100%;
+    margin-bottom:50px;
+}
+
+.footerHotelPage{
+    position: relative;
+    top:60px;
+    margin-top: 384px;
+}
+
+.backImageHotels{
+    position: relative;
+    top:-3340px;
+    z-index:-1;
+}
+
+.backImageHotel{
+    object-fit: cover;
+    width: 100vw;    
+    height: 3160px;
+}

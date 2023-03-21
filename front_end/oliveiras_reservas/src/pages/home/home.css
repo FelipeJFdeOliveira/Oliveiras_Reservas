@@ -1,0 +1,61 @@
+.componentsHome{
+    animation-name: anime;
+    animation-duration: 2s;
+    height: 5300px;
+}
+
+.footerHomePage{
+    animation-name: anime;
+    animation-duration: 2s;
+}
+
+@keyframes anime {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.homeQuemSomos{
+    position: relative;
+    top:50px;
+}
+
+.homeProductHotel{
+    position: relative;
+    top:200px;
+}
+
+.homeNavbar{
+    position:sticky;
+    top:0px;
+    z-index:1;
+}
+
+.homeProductHouse{
+    position: relative;
+    top:350px;
+}
+
+.homePlaces{
+    position: relative;
+    top:500px;
+}
+
+.footerHomePage{
+    position: relative;
+    top:804px;
+}
+
+.homeBackGround{
+    position: relative;
+    bottom:3854px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: -1;
+}
+
+.homeBackImage{
+    object-fit: cover;
+    width: 100vw;    
+    height: 4418px;
+}
