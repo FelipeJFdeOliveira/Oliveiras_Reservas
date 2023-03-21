@@ -1,3 +1,3 @@
 # Oliveiras_Reservas
 # Trabalho de conclusão de curso
-# Pós-graduação em desenvolvimento WEB Full-Stack
+# Pós-graduação em Desenvolvimento WEB Full-Stack
