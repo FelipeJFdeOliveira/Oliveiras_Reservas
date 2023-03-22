@@ -1,19 +1,6 @@
-.navContainer {
-    background-color: #FFA07A;
-    max-width: 100%;
-    height: 142px;
-    z-index: 1;
-}
-
-
-.navItem{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .navItems {
-    width: 1024px;  
+    background-color: #FFA07A;
+    width: 1024px; 
     height: 142px;
     display: flex;
     flex-direction: row;
@@ -21,42 +8,11 @@
     justify-content: space-between;
 }
 
-.navLogin{
-    position: relative;
-    top: -40px;
-}
-
-.navHome.black{
+.navHome.black, .navHotel.black, .navHouse.black, .navAdministrator.black, .navLog.black{
     font-size: 16px;
     color: black;
     font-family: Open Sans;
     cursor: pointer;
-}
-
-.navHotel.black{
-    font-size: 16px;
-    color: black;
-    font-family: Open Sans;
-    cursor: pointer;
-}
-
-.navHouse.black{
-    font-size: 16px;
-    color: black;
-    font-family: Open Sans;
-    cursor: pointer;
-}
-
-.navAdministrator.black{
-    font-size: 16px;
-    color: black;
-    font-family: Open Sans;
-}
-
-.navLog.black{
-    font-size: 16px;
-    color: black;
-    font-family: Open Sans;
 }
 
 .navHome, .navHotel, .navHouse, .navAdministrator, .navLog{
@@ -75,15 +31,43 @@
     flex-direction: row;
     justify-content: flex-end;
     gap:20px;
-    position: relative;
-    left:-126px;
+    margin-left: -126px;
 }
 
 .navLogo{
     height: 100%;
+    margin: 0px;
 }
 
-.navAdmin{
-    position: relative;
-    left:-70px;
+.navLogin{
+    margin-bottom: 80px;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 320px) {    
+    .navItems {
+        max-width: 100%;
+        height: 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+   
+    .navHome.black, .navHotel.black, .navHouse.black, .navAdministrator.black, .navLog.black{
+        font-size: 12px;
+    }
+    
+    .navHome, .navHotel, .navHouse, .navAdministrator, .navLog{
+        font-size: 12px;
+    }
+    
+    .navMenu{
+        margin:0;
+        margin-top: -80px;
+        
+    }
+
+    .navLogin{
+        margin:0;
+        margin-bottom: 20px;
+    }
 }

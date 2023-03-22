@@ -29,4 +29,17 @@
     margin-bottom: 10px;
 }
 
+@media screen and (max-width: 1024px) and (min-width: 320px) {
+    .homeQuemSomosNos{
+        width: fit-content;
+        margin: 0 20px;
+    }
 
+    .homeQuemSomosNos p{
+        font-size: 17px;
+        line-height:28px;
+    }
+    .homeQuemSomosContainer{
+        height: fit-content;
+    }
+}

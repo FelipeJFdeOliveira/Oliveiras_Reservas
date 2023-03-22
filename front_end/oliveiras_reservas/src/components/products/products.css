@@ -1,65 +1,64 @@
-.productsContainerHotel{
+.productsContainerHotel {
     max-width: 100%;
-    height: 654px;
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.productsHotel{
-    display:flex;
+.productsHotel {
+    display: flex;
     flex-direction: row;
     justify-content: center;
-    width:1024px;
+    width: 1024px;
     height: 100%;
 }
 
-.productContentHotel{
+.productContentHotel {
     height: 585.88px;
     width: 502px;
     text-align: justify;
-    margin-right:20px ;
-    
+    margin-right: 20px;
+
 }
 
-.productHotel{
+.productHotel {
     object-fit: cover;
     max-height: 100%;
     border-radius: 20px;
     border: solid 2px black;
 }
 
-.productContentHotel p{
+.productContentHotel p {
     font-family: Open Sans;
-    line-height:38px;
+    line-height: 38px;
     font-size: 20px;
     text-indent: 4em;
     font-style: italic;
 }
 
-.productContentHotel h1{
+.productContentHotel h1 {
     font-family: Montez;
     font-size: 55px;
     margin-bottom: 10px;
 }
 
-.productsHouse{
-    display:flex;
+.productsHouse {
+    display: flex;
     flex-direction: row;
     justify-content: center;
-    width:1024px;
+    width: 1024px;
     height: 100%;
 }
 
-.productContentHouse{
+.productContentHouse {
     height: 585.88px;
     width: 502px;
     text-align: justify;
-    margin-left:20px ;
-    
+    margin-left: 20px;
+
 }
 
-.productContentHouse p{
+.productContentHouse p {
     font-family: Open Sans;
     font-size: 20px;
     text-indent: 4em;
@@ -67,23 +66,84 @@
     font-style: italic;
 }
 
-.productContentHouse h1{
+.productContentHouse h1 {
     font-family: Montez;
     font-size: 55px;
     margin-bottom: 10px;
 }
 
-.productHouse{
+.productHouse {
     object-fit: cover;
     max-height: 100%;
     border-radius: 20px;
     border: solid 2px black;
 }
 
-.productsContainerHouse{
+.productsContainerHouse {
     max-width: 100%;
     height: 654px;
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 320px) {
+    .productsHotel {
+        width: 100%;
+        max-height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .productContentHotel {
+        width: fit-content;
+        height: fit-content;
+    }
+
+    .productContentHotel p {
+        font-size: 17px;
+        line-height: 28px;
+        margin: 0 20px;
+    }
+
+    .productContentHotel h1 {
+        margin: 0 20px;
+    }
+
+    .productHotel {
+        object-fit: cover;
+        width: 45%;
+        margin-top: 10px;
+    }
+
+    .productsHouse {
+        width: 100%;
+        max-height: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .productContentHouse {
+        width: fit-content;
+        height: fit-content;
+    }
+
+    .productContentHouse p {
+        font-size: 17px;
+        line-height: 28px;
+        margin: 0 20px;
+    }
+
+    .productContentHouse h1 {
+        margin: 0 20px;
+    }
+
+    .productHouse {
+        object-fit: cover;
+        width: 45%;
+        margin-top: 10px;
+    }
+
 }

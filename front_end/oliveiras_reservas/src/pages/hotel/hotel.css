@@ -1,12 +1,12 @@
 .componentsHotel{
     animation-name: anime;
-    animation-duration: 2s;
+    animation-duration: 5s;
     height: 4022px;
 }
 
 .footerHotelPage{
     animation-name: anime;
-    animation-duration: 2s;
+    animation-duration: 5s;
 }
 
 @keyframes anime {

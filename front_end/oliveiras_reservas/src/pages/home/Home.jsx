@@ -29,7 +29,7 @@ const Home = () => {
                 <div className="homeProductHouse">
                     <Products img={productHouse} produto={'Casas'} text={'A reserva de casas pode ser feita facilmente em nossa plataforma de reserva de casas, seja pelo computador ou dispositivo móvel. Para começar, o cliente deve acessar o site, selecionar o destino, as datas de chegada e partida e o número de hóspedes. Em seguida, a plataforma exibirá uma lista de casas disponíveis para as datas selecionadas, incluindo casas em destinos populares em todo o Brasil. Ao selecionar a casa desejada, é possível verificar a disponibilidade, preços e condições de reserva. O cliente pode selecionar as comodidades desejadas, incluindo cozinha, estacionamento, piscina, entre outras. O pagamento pode ser realizado de forma segura e confiável em nossa plataforma. '} />
                 </div>
-                <div className="homePlaces">
+                {/*<div className="homePlaces">
                     <Places />
                 </div>
                 <div className="footerHomePage">
@@ -37,7 +37,7 @@ const Home = () => {
                 </div>
                 <div className="homeBackGround">
                     <img src={Back} alt="Arquitetura" className="homeBackImage" />
-                </div>
+    </div>*/}
             </div>
         </>
     )
