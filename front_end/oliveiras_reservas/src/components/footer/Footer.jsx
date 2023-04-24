@@ -6,9 +6,7 @@ const Footer = () => {
     return (
         <>
             <div className="footerContainer">
-                <div className="footerContent">
                     <div className="footerTexts">
-                        <p>Fale Conosco | Política de Privacidade | Termos de Serviço</p>
                         <p>Copyright © 2023 Oliveiras Reservas. Todos os direitos reservados.</p>
                         <p>Endereço: Rua ABC, s/n, Babilonia, Rio de Janeiro, Brasil</p>
                         <p>Telefone: 00 9 0000-0000</p>
@@ -19,7 +17,6 @@ const Footer = () => {
                         <img src={Instagram} alt="Instagram" className="footerSM"/>
                         <img src={Facebook} alt="Facebook" className="footerSM"/>
                     </div>
-                </div>
             </div>
         </>
     )

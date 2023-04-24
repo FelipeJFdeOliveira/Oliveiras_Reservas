@@ -1,15 +1,42 @@
 .filterContainer{
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 80px;
-}
-
-.filterContent{
-    background-color: white;
     width: 1024px;
-    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 80px;
+    background-color: white;
     border-radius: 20px;
     border: solid 2px black;
+}
+
+.filterContainer button{
+    border-radius: 20px;
+    background-color: #A9785C;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    border-color: none;
+    width: 120px;
+    height: 50px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.filterWhere{
+    border: none;
+    font-size: 15px;
+    color: gray;
+    outline: none;
+}
+
+.filterBed, .filterCalendar, .filterPerson{
+    margin-right:10px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.filterDays span, .filterPeople span{
+    color: gray;
+    cursor:pointer;
 }

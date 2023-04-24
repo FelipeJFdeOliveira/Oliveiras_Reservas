@@ -8,7 +8,6 @@ const Places = () => {
     return (
         <>
             <div className="placesContainer">
-                <div className="placesFamous">
                     <div className="placeTitle">
                         <h1>Nossos destinos mais populares</h1>
                     </div>
@@ -30,7 +29,6 @@ const Places = () => {
                             <h2 className="placeH3">Salvador</h2>
                         </div>
                     </div>
-                </div>
             </div>
         </>
     )

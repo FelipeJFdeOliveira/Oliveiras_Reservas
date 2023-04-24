@@ -1,0 +1,26 @@
+.houseContainer{
+    animation-name: anime;
+    animation-duration: 3s;
+    background-color:floralwhite;
+}
+@keyframes anime {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.houseNavbar{
+    position: sticky;
+    top:0px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFA07A;
+}
+
+.houseFilter{
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

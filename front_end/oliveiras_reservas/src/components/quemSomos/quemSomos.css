@@ -1,11 +1,3 @@
-.homeQuemSomosContainer{
-    max-width:100%;
-    height: 680px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .homeQuemSomosNos{
     width: 1024px;
     height: 100%;
@@ -32,14 +24,25 @@
 @media screen and (max-width: 1024px) and (min-width: 320px) {
     .homeQuemSomosNos{
         width: fit-content;
-        margin: 0 20px;
+        height: 100%;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .homeQuemSomosNos p{
         font-size: 17px;
         line-height:28px;
+        text-indent: 2em;
+        font-family: Open Sans;
+        font-style: italic;
+        text-align: justify;
+        padding: 0px 20px;
     }
-    .homeQuemSomosContainer{
-        height: fit-content;
+    
+    .homeQuemSomosNos h1{
+        font-family: Montez;
+        font-size: 55px;
+        margin-bottom: 10px;
     }
 }

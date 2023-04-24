@@ -8,18 +8,9 @@
     justify-content: space-between;
 }
 
-.navHome.black, .navHotel.black, .navHouse.black, .navAdministrator.black, .navLog.black{
-    font-size: 16px;
-    color: black;
-    font-family: Open Sans;
-    cursor: pointer;
-}
-
-.navHome, .navHotel, .navHouse, .navAdministrator, .navLog{
-    font-size: 16px;
-    color: white;
-    font-family: Open Sans;
-    cursor: pointer;
+.navLogo{
+    height: 100%;
+    margin: 0px;
 }
 
 .navImg {
@@ -34,9 +25,18 @@
     margin-left: -126px;
 }
 
-.navLogo{
-    height: 100%;
-    margin: 0px;
+.navHome.black, .navHotel.black, .navHouse.black, .navAdministrator.black, .navLog.black{
+    font-size: 16px;
+    color: black;
+    font-family: Open Sans;
+    cursor: pointer;
+}
+
+.navHome, .navHotel, .navHouse, .navAdministrator, .navLog{
+    font-size: 16px;
+    color: white;
+    font-family: Open Sans;
+    cursor: pointer;
 }
 
 .navLogin{
@@ -62,8 +62,7 @@
     
     .navMenu{
         margin:0;
-        margin-top: -80px;
-        
+        margin-top: -80px;        
     }
 
     .navLogin{

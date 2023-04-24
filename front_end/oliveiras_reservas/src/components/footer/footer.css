@@ -7,14 +7,6 @@
     align-items: center;
 }
 
-.footerContent{
-    height: 100%;
-    width: 1024px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .footerTexts{
     height: 156px;
     display: flex;
@@ -41,4 +33,21 @@
     align-items: center;
     margin-top: 40px;
     gap: 20px;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 320px) { 
+    .footerTexts{
+        width: fit-content;
+        text-align: center;
+        font-size: 5px;
+        margin-bottom: 25px;
+    }
+
+    .footerContainer{
+        height: fit-content;
+    }
+
+    .footerSocialMedias{
+        margin-bottom: 25px;
+    }
 }
