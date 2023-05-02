@@ -1,39 +1,25 @@
-.componentsHome{
+.productContainer{
     animation-name: anime;
     animation-duration: 2s;
     background-color:floralwhite;
 }
-
 @keyframes anime {
     from {opacity: 0;}
     to {opacity: 1;}
 }
 
-.homeNavbar{
+.productNavbar{
     position: sticky;
-    top: 0px;
-    z-index:1;
+    top:0px;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #FFA07A;
 }
 
-.homeContainer{
+.productOne{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:100px;
-    margin-top: 50px;
-}
-
-@media screen and (max-width: 1024px) and (min-width: 320px) {
-    .homeContainer{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap:25px;
-        margin-top: 30px;
-    }
-
 }
