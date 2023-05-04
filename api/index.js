@@ -15,7 +15,7 @@ dotenv.config()
 
 const connect = async ()=>{
     try {
-        await mongoose.connect(process.env.MONGO)
+        mongoose.connect(process.env.MONGO)
         console.log("MongoDB está conectado!")
       } catch (error) {
         throw error
