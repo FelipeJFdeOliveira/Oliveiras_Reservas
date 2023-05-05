@@ -1,9 +1,9 @@
-import "./product.css"
+import "./hotels.css"
 import Navbar from "../../components/navbar/Navbar"
 import Place from "../../components/place/Place"
 import Footer from "../../components/footer/Footer"
 
-const Product = () => {
+const Hotels = () => {
 
     return (
         <>
@@ -22,4 +22,4 @@ const Product = () => {
     )
 }
 
-export default Product
+export default Hotels

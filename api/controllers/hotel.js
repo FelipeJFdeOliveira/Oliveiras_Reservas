@@ -49,17 +49,28 @@ export const getHotel = async (req,res)=>{
 //GET ALL
 export const getHotels = async (req, res, next)=>{
 
-    const {min, max, ...others} = req.query
-
     try {
-        const hotels = await Hotel.find({...others, price: { $gt:min | 1, $lt: max || 9999}});
+        const hotels = await Hotel.find();
         res.status(200).json(hotels)
     } catch (err) {
         next(err)
     }
 }
 
-//count by city name
+//FILTER HOTELS
+export const filterHotels = async (req, res, next)=>{
+
+    const {min, max, starMin, starMax, ...others} = req.query
+
+    try {
+        const hotels = await Hotel.find({...others, price: { $gte:min, $lte: max }, stars:  { $gte:starMin, $lte: starMax }});
+        res.status(200).json(hotels)
+    } catch (err) {
+        next(err)
+    }
+}
+
+//COUNT BY CITY
 export const countByCity = async (req, res, next)=>{
     const cities = req.query.cities.split(",")
     try {

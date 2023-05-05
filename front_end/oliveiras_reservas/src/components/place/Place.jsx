@@ -3,11 +3,8 @@ import "./place.css"
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons"
 import hotel from "../../images/cama.jpg";
 import "@fontsource/montez";
-import { useState } from "react";
 
 const Place = () => {
-
-    const [slideNumber, setSlideNumber] = useState(0)
 
     return (
         <>
