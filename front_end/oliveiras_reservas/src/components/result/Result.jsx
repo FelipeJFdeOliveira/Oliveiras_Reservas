@@ -14,7 +14,7 @@ const Result = ({ item }) => {
                     <div className="resultQualifications">
                         <span className="resultStars"> {item.stars} Estrelas</span>
                         <span className="resultRating">Nota: {item.rating}</span>
-                        <span className="resultPrice">Menor Preço: R$ {item.price}</span>
+                        <span className="resultPrice">Diária: R$ {item.price}</span>
                     </div>
                 </div>
             </Link>

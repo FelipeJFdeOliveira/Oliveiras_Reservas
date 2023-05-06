@@ -23,7 +23,7 @@ const List = () => {
     const [max, setMax] = useState(undefined);  
     const [starMin, setStarMin] = useState(undefined);
     const [starMax, setStarMax] = useState(undefined);  
-    const [date, setDate] = useState(location.state.date)
+    const [dates, setDates] = useState(location.state.dates)
     const [locale] = React.useState('pt');
 
     const { data, loading } = useFetch(
@@ -45,15 +45,15 @@ const List = () => {
                                 <h3 className="searchDestino">Destino</h3>
                                 <input onChange={(e) => setDestination(e.target.value)} className="searchInput" type="text" placeholder={destination} />
                                 <h3 className="searchDestino">Período</h3>
-                                <span className="searchInput" onClick={() => setOpenDate(!openDate)}>{`${format(date[0].startDate, "dd/MM/yyyy")} até ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+                                <span className="searchInput" onClick={() => setOpenDate(!openDate)}>{`${format(dates[0].startDate, "dd/MM/yyyy")} até ${format(dates[0].endDate, "dd/MM/yyyy")}`}</span>
                                 <div className="filterCalendarDays">
                                     <DateRange
                                         minDate={new Date()}
                                         editableDateInputs={true}
-                                        onChange={item => setDate([item.selection])}
+                                        onChange={item => setDates([item.selection])}
                                         moveRangeOnFirstSelection={false}
                                         locale={locales[locale]}
-                                        ranges={date}
+                                        ranges={dates}
                                     />
                                 </div>
                                 <div className="searchOptions">
@@ -74,16 +74,16 @@ const List = () => {
                                         <input onChange={(e) => setStarMax(e.target.value)} min={5} className="searchInputPrice" type="number" />
                                     </div>
                                     <div className="serachListOptions">
-                                        <h4 className="searchPrice">Adulto(s)</h4>
-                                        <input min={1} className="searchInputPrice" type="number" placeholder={options.adulto} />
+                                        <h4 className="searchPrice">Adultos</h4>
+                                        <input min={1} className="searchInputPrice" type="number" placeholder={options.adult} />
                                     </div>
                                     <div className="serachListOptions">
-                                        <h4 className="searchPrice">Criança(s)</h4>
-                                        <input min={0} className="searchInputPrice" type="number" placeholder={options.criança} />
+                                        <h4 className="searchPrice">Crianças</h4>
+                                        <input min={0} className="searchInputPrice" type="number" placeholder={options.children} />
                                     </div>
                                     <div className="serachListOptions">
-                                        <h4 className="searchPrice">Quarto(s)</h4>
-                                        <input min={1} className="searchInputPrice" type="number" placeholder={options.quarto} />
+                                        <h4 className="searchPrice">Quartos</h4>
+                                        <input min={1} className="searchInputPrice" type="number" placeholder={options.room} />
                                     </div>
                                 </div>
                             </div>

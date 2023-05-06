@@ -3,11 +3,12 @@ import "./filter.css";
 import { faBed, faCalendarDays, faPerson } from "@fortawesome/free-solid-svg-icons";
 import { DateRange } from "react-date-range";
 import * as locales from 'react-date-range/dist/locale';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
 
 const Filter = () => {
 
@@ -20,14 +21,14 @@ const Filter = () => {
     const [openOptions, setOpenOptions] = useState(false)
 
     const [options, setOptions] = useState({
-        adulto: 1,
-        criança: 0,
-        quarto: 1
+        adult: 1,
+        children: 0,
+        room: 1
     })
 
     const [locale] = React.useState('pt');
 
-    const [date, setDate] = useState([
+    const [dates, setDates] = useState([
         {
             startDate: new Date(),
             endDate: new Date(),
@@ -44,8 +45,11 @@ const Filter = () => {
         })
     }
 
+    const {dispatch} = useContext(SearchContext)
+
     const handleSearch = () => {
-        navigate("/list", { state: {destination, date, options}});
+        dispatch( { type:"NEW_SEARCH", payload:{ destination, dates, options } })
+        navigate("/list", { state: {destination, dates, options}});
     }
 
     return (
@@ -62,44 +66,44 @@ const Filter = () => {
                 </div>
                 <div className="filterDays">
                     <FontAwesomeIcon icon={faCalendarDays} className="filterCalendar" />
-                    <span className="filterSpan" onClick={() => setOpenDate(!openDate)}>{`${format(date[0].startDate, "dd/MM/yyyy")} até ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+                    <span className="filterSpan" onClick={() => setOpenDate(!openDate)}>{`${format(dates[0].startDate, "dd/MM/yyyy")} até ${format(dates[0].endDate, "dd/MM/yyyy")}`}</span>
                     <div className="filterCalendarDays">
                         {openDate && <DateRange
                             minDate={new Date()}
                             editableDateInputs={true}
-                            onChange={item => setDate([item.selection])}
+                            onChange={item => setDates([item.selection])}
                             moveRangeOnFirstSelection={false}
                             locale={locales[locale]}
-                            ranges={date}
+                            ranges={dates}
                         />}
                     </div>
                 </div>
                 <div className="filterPeople">
                     <FontAwesomeIcon icon={faPerson} className="filterPerson" />
-                    <span className="filterSpan" onClick={() => setOpenOptions(!openOptions)}>{`${options.adulto} adulto(s) - ${options.criança} criança(s) - ${options.quarto} quarto(s)`}</span>
+                    <span className="filterSpan" onClick={() => setOpenOptions(!openOptions)}>{`${options.adult} adult(s) - ${options.children} children(s) - ${options.room} room(s)`}</span>
                     {openOptions && <div className="filterOptions">
                         <div className="filterOptionsItems">
-                            <span className="filterOptionsText">Adulto(s)</span>
+                            <span className="filterOptionsText">adult(s)</span>
                             <div className="filterCounter">
-                                <button disabled={options.adulto <= 1} className="filterOptionsCounter" onClick={()=>handleOption("adulto", "d")}>-</button>
-                                <span className="filterOptionsNumber">{options.adulto}</span>
-                                <button className="filterOptionsCounter" onClick={()=>handleOption("adulto", "i")}>+</button>
+                                <button disabled={options.adult <= 1} className="filterOptionsCounter" onClick={()=>handleOption("adult", "d")}>-</button>
+                                <span className="filterOptionsNumber">{options.adult}</span>
+                                <button className="filterOptionsCounter" onClick={()=>handleOption("adult", "i")}>+</button>
                             </div>
                         </div>
                         <div className="filterOptionsItems">
-                            <span className="filterOptionsText">Criança(s)</span>
+                            <span className="filterOptionsText">children(s)</span>
                             <div className="filterCounter">
-                                <button disabled={options.criança <= 0} className="filterOptionsCounter" onClick={()=>handleOption("criança", "d")}>-</button>
-                                <span className="filterOptionsNumber">{options.criança}</span>
-                                <button className="filterOptionsCounter" onClick={()=>handleOption("criança", "i")}>+</button>
+                                <button disabled={options.children <= 0} className="filterOptionsCounter" onClick={()=>handleOption("children", "d")}>-</button>
+                                <span className="filterOptionsNumber">{options.children}</span>
+                                <button className="filterOptionsCounter" onClick={()=>handleOption("children", "i")}>+</button>
                             </div>
                         </div>
                         <div className="filterOptionsItems">
-                            <span className="filterOptionsText">Quarto(s)</span>
+                            <span className="filterOptionsText">room(s)</span>
                             <div className="filterCounter">
-                                <button disabled={options.quarto <= 1} className="filterOptionsCounter" onClick={()=>handleOption("quarto", "d")}>-</button>
-                                <span className="filterOptionsNumber">{options.quarto}</span>
-                                <button className="filterOptionsCounter" onClick={()=>handleOption("quarto", "i")}>+</button>
+                                <button disabled={options.room <= 1} className="filterOptionsCounter" onClick={()=>handleOption("room", "d")}>-</button>
+                                <span className="filterOptionsNumber">{options.room}</span>
+                                <button className="filterOptionsCounter" onClick={()=>handleOption("room", "i")}>+</button>
                             </div>
                         </div>
                     </div>}
