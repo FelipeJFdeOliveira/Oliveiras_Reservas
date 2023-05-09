@@ -5,7 +5,6 @@ import {
 } from "react-router-dom";
 import Home from "./pages/home/Home.jsx"
 import Hotel from "./pages/hotel/Hotel.jsx";
-import House from "./pages/house/House.jsx";
 import List from "./pages/list/List.jsx";
 import Hotels from "./pages/hotels/Hotels.jsx";
 import Admin from "./pages/admin/Admin.jsx";
@@ -18,7 +17,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/hotels" element={<Hotel/>}/>
-        <Route path="/houses" element={<House/>}/>
         <Route path="/list" element={<List/>}/>
         <Route path="/hotels/:id" element={<Hotels/>}/>
         <Route path="/admin" element={<Admin/>}/>

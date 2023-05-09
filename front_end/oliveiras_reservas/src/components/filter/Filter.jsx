@@ -52,6 +52,10 @@ const Filter = () => {
         navigate("/list", { state: {destination, dates, options}});
     }
 
+    const today = format(new Date().getTime(), "dd/MM/yyyy")
+
+    console.log(today)
+
     return (
         <>
             <div className="filterContainer">
@@ -66,7 +70,7 @@ const Filter = () => {
                 </div>
                 <div className="filterDays">
                     <FontAwesomeIcon icon={faCalendarDays} className="filterCalendar" />
-                    <span className="filterSpan" onClick={() => setOpenDate(!openDate)}>{`${format(dates[0].startDate, "dd/MM/yyyy")} até ${format(dates[0].endDate, "dd/MM/yyyy")}`}</span>
+                    <span className="filterSpan" onClick={() => setOpenDate(!openDate)}>{today === format(dates[0].endDate - 1, "dd/MM/yyyy") ? "Quando você deseja reservar?" :`${format(dates[0].startDate, "dd/MM/yyyy")} até ${format(dates[0].endDate, "dd/MM/yyyy")}`}</span>
                     <div className="filterCalendarDays">
                         {openDate && <DateRange
                             minDate={new Date()}
