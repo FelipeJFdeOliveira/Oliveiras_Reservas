@@ -7,10 +7,10 @@ const QuemSomos = () => {
         <>
             <div className="homeQuemSomosNos">
                 <h1 >Quem Somos?</h1>
-                <p> Somos uma plataforma de reserva de hotéis e casas que acredita que viajar deve ser uma experiência única e inesquecível.
-                    Com uma ampla variedade de opções de hospedagem, desde hotéis luxuosos até casas de campo aconchegantes, estamos
+                <p> Somos uma plataforma de reserva de hotéis que acredita que viajar deve ser uma experiência única e inesquecível.
+                    Com uma ampla variedade de opções de hospedagem, desde hotéis luxuosos até hotéis simples e aconchegantes, estamos
                     comprometidos em oferecer opções que atendam às necessidades e preferências exclusivas de cada cliente.</p>
-                <p>Nosso objetivo é tornar a reserva de hotéis e casas simples e fácil, sem complicações. Trabalhamos incansavelmente para
+                <p>Nosso objetivo é tornar a reserva de hotéis simples e fácil, sem complicações. Trabalhamos incansavelmente para
                     garantir que nossos clientes tenham a melhor experiência desde o momento em que fazem a reserva até o check-out.
                     Nossa equipe é formada por profissionais dedicados e experientes, prontos para ajudar os clientes em todas
                     as etapas da jornada de reserva.</p>

@@ -53,7 +53,7 @@ const Place = () => {
                 </div>
                 <span className="place_Nota">Nota: {data.rating}</span>
                 <span className="place_Stars">{data.stars} Estrelas</span>
-                <span className="place_Price">Diária/quarto: R$ {data.price}</span>
+                <span className="place_Price">Diária: R$ {data.price}</span>
                 <div className="place_Images">
                     <img src={hotel} alt="produto" className="place_product" />
                     <img src={hotel} alt="produto" className="place_product" />
