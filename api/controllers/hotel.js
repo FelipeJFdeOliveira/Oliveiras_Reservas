@@ -96,3 +96,14 @@ export const getHotelRooms = async(req, res, next)=>{
         next(err)
     }
 }
+
+//GET CITY NAME
+export const cityName  = async (req, res, next)=>{
+    try {
+        const cities = await Hotel.distinct('city');        
+        res.status(200).json(cities)
+    
+    } catch (err) {
+        next(err)
+    }
+}

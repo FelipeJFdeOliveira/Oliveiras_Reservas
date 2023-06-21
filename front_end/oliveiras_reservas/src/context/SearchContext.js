@@ -4,10 +4,12 @@ const INITIAL_STATE = {
   city: undefined,
   dates: [],
   options: {
-    adult: undefined,
-    children: undefined,
-    room: undefined,
+    room: undefined
   },
+  hotelName: undefined,
+  amount: undefined,
+  selectedRooms: [],
+  alldates: []
 };
 
 export const SearchContext = createContext(INITIAL_STATE);
@@ -32,6 +34,10 @@ export const SearchContextProvider = ({ children }) => {
         city: state.city,
         dates: state.dates,
         options: state.options,
+        hotelName: state.hotelName,
+        amount: state.amount,
+        selectedRooms: state.selectedRooms,
+        alldates: state.alldates,
         dispatch,
       }}
     >

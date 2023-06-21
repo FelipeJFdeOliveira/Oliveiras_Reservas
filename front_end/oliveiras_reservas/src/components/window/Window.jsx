@@ -1,5 +1,5 @@
 import "./window.css"
-
+import "@fontsource/montez";
 
 const Window = ({ image, text, city, qtd }) => {
     return (

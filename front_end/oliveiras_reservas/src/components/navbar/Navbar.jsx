@@ -16,10 +16,12 @@ const Navbar = ({ page }) => {
         dispatch({ type: "LOGOUT" });
         try {
             dispatch({ type: "LOGOUT" });
+            window.open("http://localhost:8800/api/auth/logout", "_self");
         } catch (err) {
             dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
         }
     };
+
 
     return (
         <>
@@ -32,15 +34,25 @@ const Navbar = ({ page }) => {
                     <h1 onClick={() => navigate('/hotels')} className={(page === "Hotels") ? "navHotel black" : "navHotel"}>Hotéis</h1>
                 </div>
                 {user.isAdmin === true ? (<div className="navAdmin">
-                        <h1 className={(page === "Admin") ? "navAdministrator black" : "navAdministrator"} onClick={() => navigate('/admin')}>Administrador</h1>
-                    </div>) : ""
-                    }
-                {user ? (<div className="navLogin1">
-                    <h1 className={(page === "Login") ? "navLog black" : "navLog"} onClick={() => navigate('/login')}>{user.username}</h1>
-                    <h1 className={(page === "Login") ? "navLog black" : "navLog"} onClick={handleClick}>Sair</h1>
-                </div>) : (<div className="navLogin">
-                    <h1 className={(page === "Login") ? "navLog black" : "navLog"} onClick={() => navigate('/login')}>Login</h1>
-                </div>)}
+                    <h1 className={(page === "Admin") ? "navAdministrator black" : "navAdministrator"} onClick={() => navigate('/admin')}>Administrador</h1>
+                </div>) : ""
+                }
+                {
+                    user.username ?
+                        (<div className="navLogin1">
+                            <h1 className={(page === "Login") ? "navLog black" : "navLog"} onClick={() => navigate('/login')}>{user.username}</h1>
+                            <h1 className={(page === "Login") ? "navLog black" : "navLog"} onClick={handleClick}>Sair</h1>
+                        </div>)
+                        :
+                        user ?
+                            (<div className="navLogin1">
+                                <h1 className={(page === "Login") ? "navLog black" : "navLog"} onClick={() => navigate('/login')}>{user}</h1>
+                                <h1 className={(page === "Login") ? "navLog black" : "navLog"} onClick={handleClick}>Sair</h1>
+                            </div>)
+                            :
+                            (<div className="navLogin">
+                                <h1 className={(page === "Login") ? "navLog black" : "navLog"} onClick={() => navigate('/login')}>Login</h1>
+                            </div>)}
             </div>
         </>
     )

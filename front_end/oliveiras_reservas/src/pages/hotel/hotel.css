@@ -19,7 +19,6 @@
 }
 
 .hotelFilter{
-    margin-bottom: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,10 +28,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 70px;
+    gap: 60px;
 }
 
 .hotelAlgunsLocais{
     font-family: Montez;
     font-size: 65px;
+}
+
+.hotelFooter{
+    position: relative;
+    bottom: -200px;
+}
+
+
+@media screen and (max-width: 1024px) and (min-width: 320px) {
+    .hotelAlgunsLocais{
+        font-family: Montez;
+        font-size: 35px;
+        padding-top: 30px;
+        text-align: center;
+    }
 }

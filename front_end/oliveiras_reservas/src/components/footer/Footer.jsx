@@ -9,8 +9,8 @@ const Footer = () => {
                     <div className="footerTexts">
                         <p>Copyright © 2023 Oliveiras Reservas. Todos os direitos reservados.</p>
                         <p>Endereço: Rua ABC, s/n, Babilonia, Rio de Janeiro, Brasil</p>
-                        <p>Telefone: 00 9 0000-0000</p>
-                        <p>E-mail: oliveirasreservas@oliveirasreservas.com</p>
+                        <p>Telefone: +55 24 9000-0000</p>
+                        <p>E-mail: OliveirasReservas@gmail.com</p>
                     </div>
                     <div className="footerSocialMedias">
                         <p>Siga-nos nas redes sociais:</p>

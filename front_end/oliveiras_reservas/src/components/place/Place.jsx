@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./place.css"
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons"
-import hotel from "../../images/cama.jpg";
 import "@fontsource/montez";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
@@ -9,12 +8,25 @@ import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../reserveModal/Reserve.jsx";
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Unstable_Grid2';
+
+const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+}));
 
 const Place = () => {
 
     const navigate = useNavigate()
 
-    const [ openModal, setOpenModal ] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
 
     const location = useLocation()
 
@@ -22,7 +34,7 @@ const Place = () => {
 
     const { data, loading } = useFetch(`/hotels/find/${id}`)
 
-    const { dates, options } = useContext(SearchContext)
+    const { dates, options, city, dispatch } = useContext(SearchContext)
 
     const { user } = useContext(AuthContext)
 
@@ -35,43 +47,68 @@ const Place = () => {
 
     const days = dayDifference(dates[0].endDate, dates[0].startDate)
 
-    const handleClick = () =>{
-        if(user){
+    const handleClick = () => {
+        if (user) {
+            dispatch({
+                type: 'NEW_SEARCH',
+                payload: {
+                    city,
+                    dates,
+                    options,
+                    hotelName: data.name,
+                    amount: (days + 1) * data.price * options.room
+                },
+            });
             setOpenModal(true)
-        }else{
+
+        } else {
             navigate("/login")
         }
     }
 
     return (
         <>
-            {loading ? ("Carregando...") : (<div className="place_Container">
-                <h1 className="place_Name">{data.name}</h1>
-                <div className="place_address">
-                    <FontAwesomeIcon icon={faLocationDot} />
-                    <span> {data.address}</span>
-                </div>
-                <span className="place_Nota">Nota: {data.rating}</span>
-                <span className="place_Stars">{data.stars} Estrelas</span>
-                <span className="place_Price">Diária: R$ {data.price}</span>
-                <div className="place_Images">
-                    <img src={hotel} alt="produto" className="place_product" />
-                    <img src={hotel} alt="produto" className="place_product" />
-                    <img src={hotel} alt="produto" className="place_product" />
-                    <img src={hotel} alt="produto" className="place_product" />
-                </div>
-                <div className="place_Description">
-                    <div className="place_box">
-                        <h1 className="place_Title">{data.title}</h1><br></br>
-                        <p className="place_desc">{data.description}</p><br></br>
-                        <p className="place_Days">Dias Reservados: {days+1}</p>
-                        <p className="place_Value">Valor da reserva: R$ {(days+1) * data.price * options.room}</p>
-                    </div>
-                    <button onClick={handleClick} className="place_booking">Reserve!</button>
-                </div>
-                <h1 className="place_FraseEfeito">Aproveite nossas ofertas!!!!!!!!</h1>
-            </div>)}
-            {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}            
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={1} display="flex" flexDirection="column" alignItems="center" margin="30px 0px">
+                    {loading ? ("Carregando...") : (<>
+                        <Grid xs={12}>
+                            <Item><h1 className="placeItems">{data.name}</h1></Item>
+                            <Item>
+                                <div className="placeItems">
+                                    <FontAwesomeIcon icon={faLocationDot} />
+                                    <span> {data.address}</span>
+                                </div>
+                            </Item>
+                            <Item>
+                                <div className="placeItemsDescription">
+                                    <span>Nota: {data.rating}</span>
+                                    <span>{data.stars} Estrelas</span>
+                                    <span>Diária: R$ {data.price}</span>
+                                </div>
+                            </Item>
+                            <Item>
+                                <div className="placeImages">
+                                    {data.photos && (
+                                        <>
+                                            <img src={data.photos[1]} alt="foto quarto" />
+                                            <img src={data.photos[2]} alt="foto quarto" />
+                                            <img src={data.photos[3]} alt="foto quarto" />
+                                            <img src={data.photos[4]} alt="foto quarto" />
+                                        </>
+                                    )}
+                                </div>
+                            </Item>
+                            <Item><h1>{data.title}</h1></Item>
+                            <Item><p>{data.description}</p></Item>
+                            <Item><p>Dias Reservados: {days + 1}</p></Item>
+                            <Item><p>Valor da reserva: R$ {(days + 1) * data.price * options.room}</p></Item>
+                            <Item><button onClick={handleClick}>Reserve!</button></Item>
+                            <Item><h1>Aproveite nossas ofertas!!!!!!!!</h1></Item>
+                        </Grid>
+                    </>)}
+                    {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
+                </Grid>
+            </Box >
         </>
     )
 }

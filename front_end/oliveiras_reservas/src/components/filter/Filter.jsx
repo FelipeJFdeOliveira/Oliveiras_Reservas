@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./filter.css";
-import { faBed, faCalendarDays, faPerson } from "@fortawesome/free-solid-svg-icons";
+import { faBed, faCalendarDays, faPlaneDeparture } from "@fortawesome/free-solid-svg-icons";
 import { DateRange } from "react-date-range";
 import * as locales from 'react-date-range/dist/locale';
 import React, { useContext, useState } from 'react';
@@ -9,22 +9,23 @@ import 'react-date-range/dist/theme/default.css';
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
+import useFetch from "../../hooks/useFetch";
 
 const Filter = () => {
 
     const navigate = useNavigate()
 
-    const [destination, setDestination] = useState("")
+    const [destination, setDestination] = useState("Rio de Janeiro")
 
     const [openDate, setOpenDate] = useState(false)
 
     const [openOptions, setOpenOptions] = useState(false)
 
     const [options, setOptions] = useState({
-        adult: 1,
-        children: 0,
         room: 1
     })
+
+    const { data, loading } = useFetch("/hotels/cityName");
 
     const [locale] = React.useState('pt');
 
@@ -35,6 +36,8 @@ const Filter = () => {
             key: 'selection'
         }
     ]);
+
+    const [dateSelected, setDateSelected] = useState(false);
 
     const handleOption = (name, operation) => {
         setOptions(prev => {
@@ -48,44 +51,68 @@ const Filter = () => {
     const { dispatch } = useContext(SearchContext)
 
     const handleSearch = () => {
-        dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } })
+        if (!dateSelected) {
+            return;
+        }
+
+        dispatch({ type: "NEW_SEARCH", payload: { city:destination, destination, dates, options } })
         navigate("/list", { state: { destination, dates, options } });
     }
 
-    const today = format(new Date().getTime(), "dd/MM/yyyy")
-
-    const alerta = () => {
-        alert("Você precisa preencher quando e para onde deseja ir.");
+    const handleDateSelect = (item) => {
+        setDates([item.selection]);
+        setDateSelected(true);
     }
 
     return (
         <>
             <div className="filterContainer">
                 <div className="filterLocal">
-                    <FontAwesomeIcon icon={faBed} className="filterBed" />
-                    <input
-                        type="text"
-                        placeholder="Para onde você quer ir?"
+                    <FontAwesomeIcon icon={faPlaneDeparture} className="filterBed" />
+
+                    <select
+                        id="destination"
                         className="filterWhere"
-                        onChange={e => setDestination(e.target.value)}
-                    />
+                        onChange={(e) => setDestination(e.target.value)}
+                    >
+                        {loading
+                            ? "loading"
+                            : data &&
+                            data.map((city) => (
+                                <option key={city} value={city}>{city}</option>
+                            ))}
+                    </select>
                 </div>
                 <div className="filterDays">
                     <FontAwesomeIcon icon={faCalendarDays} className="filterCalendar" />
-                    <span className="filterSpan" onClick={() => setOpenDate(!openDate)}>{today === format(dates[0].endDate - 1, "dd/MM/yyyy") ? "Quando você deseja reservar?" : `${format(dates[0].startDate, "dd/MM/yyyy")} até ${format(dates[0].endDate, "dd/MM/yyyy")}`}</span>
-                    <div className="filterCalendarDays">
-                        {openDate && <DateRange
-                            minDate={new Date()}
-                            editableDateInputs={true}
-                            onChange={item => setDates([item.selection])}
-                            moveRangeOnFirstSelection={false}
-                            locale={locales[locale]}
-                            ranges={dates}
-                        />}
-                    </div>
+                    {openDate === false ? (
+                        <span className="filterSpan" onClick={() => setOpenDate(!openDate)}>
+                            Quando você deseja reservar?
+                        </span>
+                    ) : (
+                        <>
+                            {dateSelected && (
+                                <span className="filterSpan">
+                                    {`${format(dates[0].startDate, "dd/MM/yyyy")} até ${format(dates[0].endDate, "dd/MM/yyyy")}`}
+                                </span>
+                            )}
+                            <div className="filterCalendarDays">
+                                {openDate && (
+                                    <DateRange
+                                        minDate={new Date()}
+                                        editableDateInputs={true}
+                                        onChange={handleDateSelect}
+                                        moveRangeOnFirstSelection={false}
+                                        locale={locales[locale]}
+                                        ranges={dates}
+                                    />
+                                )}
+                            </div>
+                        </>
+                    )}
                 </div>
                 <div className="filterPeople">
-                    <FontAwesomeIcon icon={faPerson} className="filterPerson" />
+                    <FontAwesomeIcon icon={faBed} className="filterPerson" />
                     <span className="filterSpan" onClick={() => setOpenOptions(!openOptions)}>Quantos quartos? <b>{options.room}</b> Quarto(s)</span>
                     {openOptions &&
                         <div className="filterOptions">
@@ -99,12 +126,10 @@ const Filter = () => {
                             </div>
                         </div>}
                 </div>
-                {(today === format(dates[0].endDate - 1, "dd/MM/yyyy") || destination === "") ? <button className="filterButtonSearch" onClick={alerta}>Procurar</button>
-                    : <button className="filterButtonSearch" onClick={handleSearch}>Procurar</button>}
+                <button className={`filterButtonSearch ${!dateSelected && "invisible"}`} onClick={handleSearch}>Procurar</button>
             </div>
-
         </>
     )
 }
 
-export default Filter
+export default Filter;

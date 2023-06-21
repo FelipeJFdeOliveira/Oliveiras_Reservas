@@ -37,6 +37,7 @@ const Hotel = () => {
     const [hotel, setHotel] = useState([]);
     const [hotelId, setHotelId] = useState("");
     const [hotelIdUpdate, setHotelIdUpdate] = useState("")
+    const [photos, setPhotos] = useState([]);
 
     const { data, loading } = useFetch("/hotels")
 
@@ -50,9 +51,10 @@ const Hotel = () => {
                 address,
                 stars,
                 rating,
+                photos,
                 title,
                 description,
-                price,
+                price
             })
 
         } catch (err) {
@@ -117,17 +119,36 @@ const Hotel = () => {
 
             const response = await axios.get(`/hotels/find/${hotelId}`);
             setHotel(response.data);
-            
+
 
         } catch (err) {
             console.log(err);
         }
+    }  
+
+    const handleImageChange = (e) => {
+        const files = e.target.files;
+        const imageArray = [];
+
+        for (let i = 0; i < files.length; i++) {
+            const reader = new FileReader();
+            reader.readAsDataURL(files[i]);
+            reader.onload = () => {
+                const base64Image = reader.result;
+                imageArray.push(base64Image);
+
+                setPhotos([...photos, base64Image]);
+            };
+            reader.onerror = (error) => {
+                console.log("Error: ", error);
+            };
+
+        }
     }
-     
 
     return (
         <>
-            <Container style={{height: "auto"}} maxWidth="lg">
+            <Container style={{ height: "auto" }} maxWidth="lg">
                 <Accordion>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
@@ -148,6 +169,11 @@ const Hotel = () => {
                                     <TextField id="standard-basic" onChange={e => setTitle(e.target.value)} type="text" label="título" variant="standard" />
                                     <TextField multiline id="standard-basic" onChange={e => setDescription(e.target.value)} type="text" label="descrição" variant="standard" />
                                     <TextField id="standard-basic" onChange={e => setPrice(e.target.value)} type="number" label="diária (R$)" variant="standard" />
+                                    <input type="file" accept="image/*" multiple onChange={handleImageChange} />
+                                    {photos.map((image, index) => (
+                                        <img key={index} src={image} alt="imagens hotel e quartos" width={100} height={100} />
+                                    ))}
+
                                     <Button className="adminButtonHotel" onClick={handleClick} variant="contained">Cadastrar</Button>
                                 </Stack>
                             </Box>

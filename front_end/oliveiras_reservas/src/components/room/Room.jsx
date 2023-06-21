@@ -118,7 +118,7 @@ const Room = () => {
                                             ))}
                                     </Select>
                                     <TextField id="standard-basic" onChange={e => setTitle(e.target.value)} type="text" label="título" variant="standard" />
-                                    <TextField id="standard-basic" onChange={e => setDescription(e.target.value)} type="text" label="descrição" variant="standard" />
+                                    <TextField id="standard-basic" multiline onChange={e => setDescription(e.target.value)} type="text" label="descrição" variant="standard" />
                                     <TextField id="standard-basic" onChange={e => setMaxPeople(e.target.value)} type="number" label="quantidade máxima de pessoas" variant="standard" />
                                     <TextField id="standard-basic" onChange={e => setNumbers(e.target.value)} label="número dos quartos (separe os números por ponto e vírgula)" variant="standard" />
                                     <Button onClick={handleClick} variant="contained">Cadastrar</Button>

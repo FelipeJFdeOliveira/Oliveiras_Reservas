@@ -13,19 +13,34 @@ import Login from "./pages/login/Login.jsx";
 import CreateUser from "./pages/createUser/CreateUser.jsx"
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext.js";
+import Profile from "./pages/profile/Profile.jsx";
+import ForgetPassword from "./pages/changePassword/ChangePassword.jsx"
+import ResetPassword from "./pages/redefinir-senha/ResetPassword.jsx";
 
 function App() {
 
-  const ProtectionRoutes = ({children}) => {
-    const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
 
-    if(user.isAdmin !== true){
-      return <Navigate to="/login"/>
+  const ProtectionRoutes = ({ children }) => {
+
+    if (user.isAdmin !== true) {
+      return <Navigate to="/login" />
     }
 
     return children;
 
   }
+
+  const ProtectionRoutePayer = ({ children }) => {
+
+    if (!user) {
+      return <Navigate to="/login" />
+    }
+
+    return children;
+
+  }
+
   return (
     <BrowserRouter>
       <Routes>
@@ -34,10 +49,15 @@ function App() {
         <Route path="/list" element={<List />} />
         <Route path="/hotels/:id" element={<Hotels />} />
         <Route path="/CreateUser" element={<CreateUser />} />
+        <Route path="/ChangePassword" element={<ForgetPassword />} />
+        <Route path="/redefinir-senha" element={<ResetPassword />} />
         <Route path="/admin" element={<ProtectionRoutes>
           <Admin />
         </ProtectionRoutes>} />
         <Route path="/login" element={<Login />} />
+        <Route path={`/profile/${user._id}`} element={<ProtectionRoutePayer>
+          <Profile />
+        </ProtectionRoutePayer>} />
       </Routes>
     </BrowserRouter>
   );

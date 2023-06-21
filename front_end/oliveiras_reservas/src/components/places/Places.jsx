@@ -26,7 +26,7 @@ const Places = () => {
                         </div>
                         <div className="place">
                             <img src={SA} alt="Salvador" className="placesImg"></img>
-                            <h2 className="placeH3">Salvador</h2>
+                            <h2 className="placeH3">Belo Horizonte</h2>
                         </div>
                     </div>
             </div>

@@ -1,77 +1,27 @@
-.place_Container{
-    width: 1024px;
-    margin: 15px;
-    display: flex;
+.placeItems{
+    text-align: left;
+    color: black;
+    padding: 5px;
+}
+
+.placeItemsDescription{
+    display:flex;
     flex-direction: column;
     align-items: flex-start;
-}
-
-.place_Name{
-    margin-bottom: 20px;
-}
-
-.place_address{
-    margin-bottom: 15px;
-}
-
-.place_Nota, .place_Stars{
-    margin-bottom: 15px;
-    color: green;
-    font-weight: bold;
-}
-
-.place_Price{
-    margin-bottom: 15px;
     color: black;
-    font-weight: bold;
+    padding-left: 5px;
+    gap: 15px;
 }
 
-.place_Images{
-    width: 100%;
+.placeImages{
+    gap: 5px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 15px;
+    justify-content: center;
 }
 
-.place_product{
-    object-fit: cover;
+.placeImages img{
+    margin-bottom: 5px;
+    width: 225px;
+    height: 260px;
 }
 
-.place_Description{    
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 25px;
-}
-
-.place_desc{
-    width: 50%;
-    text-align: justify;
-}
-
-.place_FraseEfeito{
-    font-family: montez;
-    font-size: 102px;
-    color: cadetblue;
-    margin-bottom: 25px;
-}
-
-.place_booking{
-    background-color: blue;
-    font-size: 25px;
-    color: white;
-    font-weight: bold;
-    border: none;
-    outline: none;
-    width: 45%;
-    height: 50px;
-    border-radius: 25px;
-}
-
-.place_Title{
-    font-size: 20px;
-}
