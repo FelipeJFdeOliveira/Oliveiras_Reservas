@@ -7,6 +7,7 @@ const INITIAL_STATE = {
     room: undefined
   },
   hotelName: undefined,
+  hotelAddress: undefined,
   amount: undefined,
   selectedRooms: [],
   alldates: []
@@ -35,6 +36,7 @@ export const SearchContextProvider = ({ children }) => {
         dates: state.dates,
         options: state.options,
         hotelName: state.hotelName,
+        hotelAddress: state.hotelAddress,
         amount: state.amount,
         selectedRooms: state.selectedRooms,
         alldates: state.alldates,

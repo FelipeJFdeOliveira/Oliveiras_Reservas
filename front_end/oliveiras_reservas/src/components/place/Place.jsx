@@ -13,13 +13,14 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
+import "@fontsource/montez";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.primary,
 }));
 
 const Place = () => {
@@ -56,6 +57,7 @@ const Place = () => {
                     dates,
                     options,
                     hotelName: data.name,
+                    hotelAddress: data.address,
                     amount: (days + 1) * data.price * options.room
                 },
             });
@@ -72,18 +74,18 @@ const Place = () => {
                 <Grid container spacing={1} display="flex" flexDirection="column" alignItems="center" margin="30px 0px">
                     {loading ? ("Carregando...") : (<>
                         <Grid xs={12}>
-                            <Item><h1 className="placeItems">{data.name}</h1></Item>
+                            <Item><h1 className="placeTitle">{data.name}</h1></Item>
                             <Item>
-                                <div className="placeItems">
+                                <div className="placeAddress">
                                     <FontAwesomeIcon icon={faLocationDot} />
                                     <span> {data.address}</span>
                                 </div>
                             </Item>
                             <Item>
                                 <div className="placeItemsDescription">
-                                    <span>Nota: {data.rating}</span>
-                                    <span>{data.stars} Estrelas</span>
-                                    <span>Diária: R$ {data.price}</span>
+                                    <span><b>Nota:</b> {data.rating}</span>
+                                    <span><b>Estrelas:</b> {data.stars}</span>
+                                    <span><b>Diária:</b> R$ {data.price}</span>
                                 </div>
                             </Item>
                             <Item>
@@ -100,9 +102,9 @@ const Place = () => {
                             </Item>
                             <Item><h1>{data.title}</h1></Item>
                             <Item><p>{data.description}</p></Item>
-                            <Item><p>Dias Reservados: {days + 1}</p></Item>
-                            <Item><p>Valor da reserva: R$ {(days + 1) * data.price * options.room}</p></Item>
-                            <Item><button onClick={handleClick}>Reserve!</button></Item>
+                            <Item><p><b>Dias Reservados:</b> {days + 1}</p></Item>
+                            <Item><p><b>Valor da reserva:</b> R$ {(days + 1) * data.price * options.room}</p></Item>
+                            <Item><button className="placeReserve" onClick={handleClick}>Reserve!</button></Item>
                             <Item><h1>Aproveite nossas ofertas!!!!!!!!</h1></Item>
                         </Grid>
                     </>)}

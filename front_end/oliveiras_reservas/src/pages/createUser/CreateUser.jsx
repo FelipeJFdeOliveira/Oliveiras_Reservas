@@ -43,10 +43,10 @@ const CreateUser = () =>{
           <Box sx={{ width: '60%' }}>
             <Stack spacing={4}>
               <TextField onChange={e => setUsername(e.target.value)} type="text" label="nome de usuário" variant="standard" />
-              <TextField onChange={e => setEmail(e.target.value)} type="text" label="email" variant="standard" />
+              <TextField onChange={e => setEmail(e.target.value)} type="email" label="email" variant="standard" />
               <TextField onChange={e => setCountry(e.target.value)} type="text" label="país" variant="standard" />
               <TextField onChange={e => setCity(e.target.value)} type="text" label="cidade" variant="standard" />
-              <TextField onChange={e => setPhone(e.target.value)} type="text" label="telefone" variant="standard" />
+              <TextField onChange={e => setPhone(e.target.value)} type="tel" label="telefone" variant="standard" />
               <TextField onChange={e => setPassword(e.target.value)} type="password" label="senha" variant="standard" />
               <Button onClick={handleClick} variant="contained">Criar</Button>
               <br />

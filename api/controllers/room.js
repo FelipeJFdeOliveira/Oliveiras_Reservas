@@ -77,7 +77,6 @@ export const getRooms = async (req, res, next)=>{
     }
 } 
 
-
 //UPDATE ROOM AVAILABILITY
 export const updateRoomAvailability = async (req, res, next) => {
     try {
@@ -92,5 +91,28 @@ export const updateRoomAvailability = async (req, res, next) => {
       res.status(200).json("O estado do quarto foi alterado.");
     } catch (err) {
       next(err);
+    }
+  };
+
+//GET ROOM NUMBER
+export const getRoomNumbers = async (req, res, next) => {
+    try {
+
+        const ids = req.params.ids.split(',');
+
+        const rooms = await Room.find({
+          'roomNumbers._id': {$in: ids}}).select(['roomNumbers.number', 'roomNumbers._id'])
+    
+        const roomNumbers = rooms.reduce((acc, room) => {
+        const matchingNumbers = room.roomNumbers
+            .filter(numberObj => ids.includes(numberObj._id.toString()))
+            .map(numberObj => numberObj.number);
+        return [...acc, ...matchingNumbers];
+        }, []);
+
+        res.json({ roomNumbers });
+    } catch (err) {
+        next(err)
+        res.status(500).json({ error: 'Erro ao consultar quartos.' });
     }
   };

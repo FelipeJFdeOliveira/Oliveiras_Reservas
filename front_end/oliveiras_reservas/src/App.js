@@ -13,7 +13,7 @@ import Login from "./pages/login/Login.jsx";
 import CreateUser from "./pages/createUser/CreateUser.jsx"
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext.js";
-import Profile from "./pages/profile/Profile.jsx";
+import Payment from "./pages/payment/Payment.jsx";
 import ForgetPassword from "./pages/changePassword/ChangePassword.jsx"
 import ResetPassword from "./pages/redefinir-senha/ResetPassword.jsx";
 
@@ -55,8 +55,8 @@ function App() {
           <Admin />
         </ProtectionRoutes>} />
         <Route path="/login" element={<Login />} />
-        <Route path={`/profile/${user._id}`} element={<ProtectionRoutePayer>
-          <Profile />
+        <Route path={`/payment/${user._id}`} element={<ProtectionRoutePayer>
+          <Payment />
         </ProtectionRoutePayer>} />
       </Routes>
     </BrowserRouter>

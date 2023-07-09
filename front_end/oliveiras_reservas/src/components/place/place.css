@@ -1,4 +1,12 @@
-.placeItems{
+.placeTitle{
+    text-align: center;
+    color: black;
+    padding: 5px;
+    font-family: Montez;
+    font-size: 70px;
+}
+
+.placeAddress{
     text-align: left;
     color: black;
     padding: 5px;
@@ -23,5 +31,21 @@
     margin-bottom: 5px;
     width: 225px;
     height: 260px;
+}
+
+.placeReserve{
+    border-radius: 20px;
+    background-color:rgba(0, 0, 255, 0.521);
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    border-color: none;
+    width: 250px;
+    height: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 15px 0px;
+    border: none;
+    outline: none;
 }
 

@@ -1,7 +1,7 @@
 import express from "express"
 import Room from "../models/Room.js"
 import { createError } from "../utils/error.js"
-import { createRoom, updateRoom, deleteRoom, getRoom, getRooms, updateRoomAvailability } from "../controllers/room.js"
+import { createRoom, updateRoom, deleteRoom, getRoom, getRooms, updateRoomAvailability, getRoomNumbers } from "../controllers/room.js"
 import { verifyAdmin } from "../utils/verifyToken.js"
 
 const router = express.Router()
@@ -23,5 +23,8 @@ router.get("/", getRooms)
 
 //UPDATE ROOM AVAILABILITY
 router.put("/availability/:id", updateRoomAvailability)
+
+//GET ROOM NUMBERS
+router.get("/numbers/:ids", getRoomNumbers)
 
 export default router

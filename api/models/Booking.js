@@ -10,14 +10,6 @@ const BookingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    roomNumbers:[
-        {
-            number: Number, 
-            unavailableDates: {
-                type: [Date]
-            }
-        }
-    ],
     hotelName:{
         type: String,
         required: true
@@ -26,12 +18,28 @@ const BookingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    Address:{
+        type: String,
+        required: true
+    },
     quantityRoom:{
         type: Number,
         required: true
     },
+    rooms:{
+        type:Array,
+        required: true
+    },
     amountValue:{
         type: Number,
+        required: true
+    },
+    checkIn: {
+        type: Date,
+        required: true
+    },
+    checkOut: {
+        type: Date,
         required: true
     },
     creditCardNumber:{

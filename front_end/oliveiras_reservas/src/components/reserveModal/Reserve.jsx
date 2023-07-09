@@ -5,8 +5,8 @@ import useFetch from "../../hooks/useFetch"
 import { useContext, useState } from "react"
 import { SearchContext } from "../../context/SearchContext";
 import { useNavigate } from "react-router-dom"
-import { AuthContext } from "../../context/AuthContext"
-
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios"
 
 const Reserve = ({ setOpen, hotelId }) => {
 
@@ -16,7 +16,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 
   const { data } = useFetch(`/hotels/room/${hotelId}`)
 
-  const { dates, options, hotelName, amount, city, dispatch } = useContext(SearchContext)
+  const { dates, options, hotelName, hotelAddress, amount, city, dispatch } = useContext(SearchContext)
 
   const [count, setCount] = useState(options.room);
 
@@ -70,11 +70,14 @@ const Reserve = ({ setOpen, hotelId }) => {
 
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleClick = async () => {
     try {
+      
+      const response = await axios.get(`/rooms/numbers/${selectedRooms}`)
+
       setOpen(false);
-      dispatch({ type: "NEW_SEARCH", payload: { amount, dates, options, hotelName, city, selectedRooms: selectedRooms, alldates: alldates } })
-      navigate(`/profile/${user._id}`, { state: { amount, dates, options, hotelName, city, selectedRooms, alldates } });
+      dispatch({ type: "NEW_SEARCH", payload: { amount, dates, options, hotelName, hotelAddress, city, selectedRooms: response.data.roomNumbers, alldates: alldates } })
+      navigate(`/payment/${user._id}`, { state: { amount, dates, options, hotelName, hotelAddress, city, selectedRooms, alldates } });
     } catch (err) {
       console.log(err)
     }
