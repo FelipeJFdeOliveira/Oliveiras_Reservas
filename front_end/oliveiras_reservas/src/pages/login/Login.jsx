@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
@@ -36,7 +36,7 @@ const Login = () => {
 
       if (res.data.isAdmin === false) {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-        navigate("/")
+        navigate("/login")
       }
 
     } catch (err) {
@@ -44,33 +44,25 @@ const Login = () => {
     }
   };
 
-  const google = () => {
+  const google = async () => {
+      
+    try {
+      window.open("http://localhost:8800/api/auth/google", "_self");
+      const res = await axios.get("/auth/login/success", {
+        withCredentials: true,
+      });
 
-    window.open("http://localhost:8800/api/auth/google", "_self");
-
+      if (res.status === 200) {       
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.user.displayName })
+        setUser(res.data.user.displayName);
+        
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await axios.get("/auth/login/success", {
-          withCredentials: true,
-        });
-
-        if (res.status === 200) {
-          setUser(res.data.user.displayName);
-          dispatch({ type: "LOGIN_SUCCESS", payload: res.data.user.displayName })
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchUser();
-  }, [dispatch]);
-
   console.log(user)
-
 
   return (
     <>

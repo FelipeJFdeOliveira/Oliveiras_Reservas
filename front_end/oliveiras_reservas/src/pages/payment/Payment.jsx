@@ -100,7 +100,7 @@ const Payment = () => {
                         <CardContent>
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
-                                    <TextField inputProps={{ maxLength: 16 }} required type="number" label="Número no cartão" fullWidth />
+                                    <TextField required inputProps={{ maxLen: 5 }}  type="number" label="Número no cartão" fullWidth />
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField required type="text" label="Nome no cartão" fullWidth />
@@ -112,7 +112,7 @@ const Payment = () => {
                                         </DemoContainer>
                                     </LocalizationProvider>
                                 </Grid>
-                                <Grid item xs={6} inputProps={{ maxLength: 3 }} type="number">
+                                <Grid item xs={6}>
                                     <TextField required type="number" label="CVV" fullWidth />
                                 </Grid>
                                 <Grid item xs={12}>
